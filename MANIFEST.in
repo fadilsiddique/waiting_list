@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include waiting_list *.css
+recursive-include waiting_list *.csv
+recursive-include waiting_list *.html
+recursive-include waiting_list *.ico
+recursive-include waiting_list *.js
+recursive-include waiting_list *.json
+recursive-include waiting_list *.md
+recursive-include waiting_list *.png
+recursive-include waiting_list *.py
+recursive-include waiting_list *.svg
+recursive-include waiting_list *.txt
+recursive-exclude waiting_list *.pyc

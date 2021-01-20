@@ -1,0 +1,28 @@
+{
+ "creation": "2021-01-20 19:00:36.355926",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "mobile_number"
+ ],
+ "fields": [
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Mobile Number"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-01-20 19:02:40.358581",
+ "modified_by": "Administrator",
+ "module": "Waiting List",
+ "name": "Referred To",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
