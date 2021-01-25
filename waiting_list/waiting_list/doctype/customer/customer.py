@@ -24,11 +24,13 @@ class Customer(Document):
 		return self.referral_code
 		
 	def before_submit(self):
-		self.referral_id = self.codeGenerator() ##randomly generated code passed to referral id field of new customer upon submission of document
+		customer_doc = frappe.db.get_all('Customer',fields=['customer','referral_id','phone_number','referred_by', 'name'])
+
+		for d in customer_doc:
+			if not d['referral_id']:
+				self.referral_id = self.codeGenerator() ##randomly generated code passed to referral id field of new customer upon submission of document
 
 		##if new customer is created using existing customers referral code, phone number of existing customer whose referral id is used will be passed to referred by field of new customer
-
-		customer_doc = frappe.db.get_all('Customer',fields=['customer','referral_id','phone_number','referred_by', 'name'])
 
 		for i in customer_doc:
 			if self.enter_referral_code:
@@ -46,6 +48,21 @@ class Customer(Document):
 					
 					})
 					doc.save()
+
+	def before_save(self):
+		#frappe.get_doc("Customer",self.phone_number)
+		# validate_doc=frappe.db.get_list("Customer",filters={'phone_number': self.phone_number} ,fields=["phone_number", "number_of_attempts", "name"])
+		# if validate_doc:
+		# 	validate_doc[0]["number_of_attempts"] = int(validate_doc[0]["number_of_attempts"]) + 1
+		
+		validate_doc=frappe.db.get_list("Customer",filters={'phone_number': self.phone_number})
+		if validate_doc:
+			y = validate_doc[0]['name']
+			b = frappe.get_doc("Customer", y)
+			b.number_of_attempts = 1
+			frappe.throw("Already a member")
+			b.save()
+				
 
 		# child_tab =frappe.new_doc('Referred To')
 		# child.update({
