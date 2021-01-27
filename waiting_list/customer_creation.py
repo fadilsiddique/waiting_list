@@ -50,3 +50,6 @@ def create_customer(mobile_number, vehicle, refer_code=None):
                 })
                 parent_doc.save()
         cus_doc.insert()
+        return cus_doc.referral_id
+    
+    
