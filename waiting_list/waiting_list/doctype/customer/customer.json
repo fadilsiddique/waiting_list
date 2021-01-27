@@ -17,7 +17,8 @@
   "customer",
   "section_break_9",
   "referred_to",
-  "amended_from"
+  "amended_from",
+  "val"
  ],
  "fields": [
   {
@@ -60,8 +61,10 @@
   },
   {
    "fieldname": "customer",
-   "fieldtype": "Read Only",
-   "label": "ID"
+   "fieldtype": "Link",
+   "label": "ID",
+   "options": "Customer",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_9",
@@ -95,10 +98,14 @@
   {
    "fieldname": "column_break_4",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "val",
+   "fieldtype": "Data",
+   "label": "val"
   }
  ],
- "is_submittable": 1,
- "modified": "2021-01-25 11:27:24.905490",
+ "modified": "2021-01-27 13:02:11.857574",
  "modified_by": "Administrator",
  "module": "Waiting List",
  "name": "Customer",
