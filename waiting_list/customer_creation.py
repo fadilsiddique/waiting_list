@@ -29,6 +29,8 @@ def create_customer(mobile_number, vehicle, refer_code=None):
         b = frappe.get_doc("Customer", y)
         b.number_of_attempts = int(b.number_of_attempts) + 1
         b.save()
+        return_val = {"alert": "Already Registered", "refer_id": b.referral_id}
+        return (return_val)
     
     # If the passed mobile number is not in the database, a new customer is created.
     else:
@@ -50,6 +52,8 @@ def create_customer(mobile_number, vehicle, refer_code=None):
                 })
                 parent_doc.save()
         cus_doc.insert()
-        return cus_doc.referral_id
+
+        return_val = {"refer_id": cus_doc.referral_id}
+        return return_val
     
     
