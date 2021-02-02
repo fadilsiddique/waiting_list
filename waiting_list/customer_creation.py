@@ -49,8 +49,7 @@ def create_customer(mobile_number, vehicle, refer_code=None):
                 parent_doc = frappe.get_doc("Customer", customer_name) # Adds the customer number to the referrer doc table(Refferd To)
                 parent_doc.append('referred_to', {
                     'parent_field':'referred_to',
-                    'mobile_number': mobile_number,
-                    'customer_id': customer_name 
+                    'mobile_number': mobile_number
                 })
                 parent_doc.save()
         cus_doc.insert()
